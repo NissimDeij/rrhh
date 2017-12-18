@@ -35,10 +35,10 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jMenu3.setText("jMenu3");
 
@@ -67,9 +67,6 @@ public class menuPrincipal extends javax.swing.JFrame {
 
         jMenu4.setText("Ver");
 
-        jMenuItem2.setText("Listado trabajadores");
-        jMenu4.add(jMenuItem2);
-
         jMenuItem3.setText("Buscar trabajador según codigo");
         jMenu4.add(jMenuItem3);
 
@@ -78,6 +75,9 @@ public class menuPrincipal extends javax.swing.JFrame {
 
         jMenuItem6.setText("Eliminar trabajador según codigo");
         jMenu4.add(jMenuItem6);
+
+        jMenuItem2.setText("Listado trabajadores");
+        jMenu4.add(jMenuItem2);
 
         jMenuBar1.add(jMenu4);
 
