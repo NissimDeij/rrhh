@@ -42,6 +42,7 @@ public class controlador implements ActionListener, MouseListener {
         itmEditar, //editar trabajador por codigo
         itmEliminar, //eliminar trab por codigo
         //botones
+        btnBuscar, //buscar un trabajador por codigo
         btnGuardar, //guardar (o ingresar) nuevo trabajador
         btnGuardarCambios, //guardar cambios (al editar trabajador)
         btnEliminar, //eliminar trabajador
@@ -222,6 +223,7 @@ public class controlador implements ActionListener, MouseListener {
                 this.vistaTrabajador.setVisible(false);
             
             case btnBuscar:
+                
                 break;
                 
             case btnGuardar:
