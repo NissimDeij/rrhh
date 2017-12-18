@@ -10,5 +10,5 @@ package modelo;
  * @author Duoc UC
  */
 public class modelo {
-    
+    int y = 2;
 }
