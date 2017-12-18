@@ -181,8 +181,12 @@ public class modelo extends conexion {
 
     //metodo para validar que el codigo sea mayor a 0 y menor o igual a 100
     public boolean validarCodigoEntre(String codigo) {
-        if (Integer.parseInt(codigo) > 0 && Integer.parseInt(codigo) <= 100) { //  ]0,100]
-            return true;
+        try{
+            if (Integer.parseInt(codigo) > 0 && Integer.parseInt(codigo) <= 100) { //  ]0,100]
+                return true;
+            }
+        }catch(NumberFormatException nfe){
+            return false;
         }
         return false;
     }
