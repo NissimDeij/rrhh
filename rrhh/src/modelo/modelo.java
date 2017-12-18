@@ -13,7 +13,6 @@ public class modelo extends conexion {
     public boolean agregarTrabajador(
             int codigo,
             String rut,
-            String digito,
             String nombre,
             String apellido,
             int celular,
@@ -24,7 +23,7 @@ public class modelo extends conexion {
         String query = "INSERT INTO rrhh_bd.empleados("
                 + "codigo,rut,nombre,apellido,celular,email,sueldoBruto,estadoCivil,nomDepto)"
                 + "VALUES('" + codigo
-                + "','" + rut + "-" + digito
+                + "','" + rut
                 + "','" + nombre
                 + "','" + apellido
                 + "','" + celular
@@ -47,12 +46,10 @@ public class modelo extends conexion {
     //metodo para buscar un unico trabajador ya ingresado
     public String[] buscarTrabajador(int codigo){
         String[] arreglo = new String[8];
-        String query="SELECT * FROM rrhh_bd.empleados WHERE codigo="+codigo+";";
+        String query="SELECT * FROM rrhh_bd.empleados WHERE codigo=" + codigo + ";";
         try {
             PreparedStatement pstm = this.getConexion().prepareStatement(query);
             ResultSet res = pstm.executeQuery();
-            res.next();
-            res.close();
             while (res.next()) {
                 arreglo[0] = res.getString("rut");
                 arreglo[1] = res.getString("nombre");
@@ -64,6 +61,9 @@ public class modelo extends conexion {
                 arreglo[6] = res.getString("estadoCivil");
                 arreglo[7] = res.getString("nomDepto");
             }
+            
+            res.close();
+            
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
@@ -116,7 +116,6 @@ public class modelo extends conexion {
     public boolean editarTrabajador(
             int codigo,
             String rut,
-            String digito,
             String nombre,
             String apellido,
             int celular,
@@ -125,7 +124,7 @@ public class modelo extends conexion {
             String estadoCivil,
             String nomDepto) {
         String query = "UPDATE rrhh_bd.empleados SET "
-                + "rut='" + nombre
+                + "rut='" + rut
                 + "', nombre='" + nombre
                 + "', apellido='" + apellido
                 + "', celular='" + celular
