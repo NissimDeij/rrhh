@@ -223,7 +223,11 @@ public class controlador implements ActionListener, MouseListener {
                 this.vistaTrabajador.setVisible(false);
             
             case btnBuscar:
-                
+                if (this){
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo encontrar al trabajador");
+                }
                 break;
                 
             case btnGuardar:
