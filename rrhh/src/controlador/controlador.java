@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
 
 import modelo.modelo;
 import vista.menuPrincipal;
@@ -121,7 +122,11 @@ public class controlador implements ActionListener, MouseListener, FocusListener
         this.vistaTrabajador.btnModificar.setActionCommand("btnModificar");
         this.vistaTrabajador.btnModificar.addActionListener(this);
         
-        //boton modificar
+        //boton buscar
+        this.vistaTrabajador.btnBuscar.setActionCommand("btnBuscar");
+        this.vistaTrabajador.btnBuscar.addActionListener(this);
+        
+        //boton Eliminar
         this.vistaTrabajador.btnEliminar.setActionCommand("btnEliminar");
         this.vistaTrabajador.btnEliminar.addActionListener(this);
         
@@ -146,6 +151,7 @@ public class controlador implements ActionListener, MouseListener, FocusListener
             case itmBuscar:
                 this.vistaTrabajador.setLocationRelativeTo(null);
                 this.vistaTrabajador.setTitle("Buscar trabajador por codigo");
+                this.vistaTrabajador.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 this.vistaTrabajador.setVisible(true);
                 this.vistaTrabajador.lblTituloVentana.setText("Buscar trabajador");
                 
@@ -169,6 +175,7 @@ public class controlador implements ActionListener, MouseListener, FocusListener
             case itmAgregar:
                 this.vistaTrabajador.setLocationRelativeTo(null);
                 this.vistaTrabajador.setTitle("Agregar trabajador");
+                this.vistaTrabajador.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 this.vistaTrabajador.setVisible(true);
                 this.vistaTrabajador.lblTituloVentana.setText("Agregar trabajador");
                 
@@ -192,11 +199,12 @@ public class controlador implements ActionListener, MouseListener, FocusListener
             case itmEditar:
                 this.vistaTrabajador.setLocationRelativeTo(null);
                 this.vistaTrabajador.setTitle("Editar trabajador por codigo");
+                this.vistaTrabajador.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 this.vistaTrabajador.setVisible(true);
                 this.vistaTrabajador.lblTituloVentana.setText("Editar trabajador");
                 
                 //habilitamo y deshabilitamos los campos requeridos
-                this.vistaTrabajador.txtCodigo.setEditable(false);
+                this.vistaTrabajador.txtCodigo.setEditable(true);
                 this.vistaTrabajador.txtRut.setEditable(true);
                 this.vistaTrabajador.txtNombre.setEditable(true);
                 this.vistaTrabajador.txtApellido.setEditable(true);
@@ -215,6 +223,7 @@ public class controlador implements ActionListener, MouseListener, FocusListener
             case itmEliminar:
                 this.vistaTrabajador.setLocationRelativeTo(null);
                 this.vistaTrabajador.setTitle("Eliminar trabajador por codigo");
+                this.vistaTrabajador.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 this.vistaTrabajador.setVisible(true);
                 this.vistaTrabajador.lblTituloVentana.setText("Eliminar trabajador");
                 
@@ -252,34 +261,34 @@ public class controlador implements ActionListener, MouseListener, FocusListener
                 
             case btnGrabar:
                 //Enviamos datos del formulario Agregar Trabajador a metodo agregarTrabajador
-                if (this.modelo.agregarTrabajador(
-                        Integer.parseInt(this.vistaTrabajador.txtCodigo.getText()),
-                        this.vistaTrabajador.txtRut.getText(),
-                        this.vistaTrabajador.txtNombre.getText(),
-                        this.vistaTrabajador.txtApellido.getText(),
-                        Integer.parseInt(this.vistaTrabajador.txtCelular.getText()),
-                        this.vistaTrabajador.txtEmail.getText(),
-                        Integer.parseInt(this.vistaTrabajador.txtSueldo.getText()),
-                        this.vistaTrabajador.cmbEstadoCivil.getSelectedItem().toString().substring(0, 1),
-                        this.vistaTrabajador.cmbDepartamento.getSelectedItem().toString()
-                )) {
-                    JOptionPane.showMessageDialog(null, "Trabajador agregado correctamente");
-                    //Limpiamos textField
-                    this.vistaTrabajador.txtCodigo.setText("");
-                    this.vistaTrabajador.txtRut.setText("");
-                    this.vistaTrabajador.txtNombre.setText("");
-                    this.vistaTrabajador.txtApellido.setText("");
-                    this.vistaTrabajador.txtCelular.setText("");
-                    this.vistaTrabajador.txtEmail.setText("");
-                    this.vistaTrabajador.txtSueldo.setText("");
-                    this.vistaTrabajador.cmbEstadoCivil.setSelectedIndex(0);
-                    this.vistaTrabajador.cmbDepartamento.setSelectedIndex(0);
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se pudo agregar trabajador");
+                if(ValidacionFinal(vistaTrabajador) == true){
+                 
+                    if (this.modelo.agregarTrabajador(
+                            Integer.parseInt(this.vistaTrabajador.txtCodigo.getText()),
+                            this.vistaTrabajador.txtRut.getText(),
+                            this.vistaTrabajador.txtNombre.getText(),
+                            this.vistaTrabajador.txtApellido.getText(),
+                            Integer.parseInt(this.vistaTrabajador.txtCelular.getText()),
+                            this.vistaTrabajador.txtEmail.getText(),
+                            Integer.parseInt(this.vistaTrabajador.txtSueldo.getText()),
+                            this.vistaTrabajador.cmbEstadoCivil.getSelectedItem().toString().substring(0, 1),
+                            this.vistaTrabajador.cmbDepartamento.getSelectedItem().toString()
+                    )) {
+                        JOptionPane.showMessageDialog(null, "Trabajador agregado correctamente");
+                        //Limpiamos textField
+                        LimpiarForm(vistaTrabajador);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo agregar trabajador");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Por favor complete todos los campos.");
                 }
                 break;
+                
 
             case btnGuardarCambios:
+                ValidacionFinal(vistaTrabajador);
                 if (this.modelo.editarTrabajador(
                         Integer.parseInt(this.vistaTrabajador.txtCodigo.getText()),
                         this.vistaTrabajador.txtRut.getText(),
@@ -329,18 +338,12 @@ public class controlador implements ActionListener, MouseListener, FocusListener
                 break;
 
             case btnLimpiar:
-                this.vistaTrabajador.txtCodigo.setText("");
-                this.vistaTrabajador.txtRut.setText("");
-                this.vistaTrabajador.txtNombre.setText("");
-                this.vistaTrabajador.txtApellido.setText("");
-                this.vistaTrabajador.txtCelular.setText("");
-                this.vistaTrabajador.txtEmail.setText("");
-                this.vistaTrabajador.txtSueldo.setText("");
-                this.vistaTrabajador.cmbEstadoCivil.setSelectedIndex(0);
-                this.vistaTrabajador.cmbDepartamento.setSelectedIndex(0);
+                LimpiarForm(vistaTrabajador);
                 break;
 
             case btnVolver:
+                LimpiarForm(vistaTrabajador);
+                this.vistaPrincipal.tblTrabajadores.setModel(this.modelo.ListarTrabajadores());
                 this.vistaTrabajador.setVisible(false);
                 break;
         }
@@ -435,19 +438,6 @@ public class controlador implements ActionListener, MouseListener, FocusListener
                 }
             }    
         }
-        // Validación instantanea al salir del campo email
-        else if(fe.getSource()==this.vistaTrabajador.txtEmail){
-            if(!this.vistaTrabajador.txtEmail.getText().equals("")){
-                
-                JOptionPane.showMessageDialog(null, "Validación email pendiente.");
-                /*
-                if(!modelo.validarEmail(this.vistaTrabajador.txtEmail.getText())){
-                    JOptionPane.showMessageDialog(null, "El número celular ingresado no coincide con el formato esperado (9 dígitos).\nPor favor ingrese solo números.");
-                    this.vistaTrabajador.txtEmail.requestFocus();
-                }
-                */
-            }    
-        }
         // Validación instantanea al salir del campo sueldo
         else if(fe.getSource()==this.vistaTrabajador.txtSueldo){
             if(!this.vistaTrabajador.txtSueldo.getText().equals("")){
@@ -458,4 +448,31 @@ public class controlador implements ActionListener, MouseListener, FocusListener
             }    
         }
     }
+    private void LimpiarForm(menuTrabajador vista){
+        vista.txtCodigo.setText("");
+        vista.txtRut.setText("");
+        vista.txtNombre.setText("");
+        vista.txtApellido.setText("");
+        vista.txtCelular.setText("");
+        vista.txtEmail.setText("");
+        vista.txtSueldo.setText("");
+        vista.cmbEstadoCivil.setSelectedIndex(0);
+        vista.cmbDepartamento.setSelectedIndex(0);
+    }
+    
+    private boolean ValidacionFinal(menuTrabajador v){
+        if(v.txtCodigo.getText().equals("") || 
+                v.txtRut.getText().equals("") ||
+                v.txtNombre.getText().equals("") ||
+                v.txtApellido.getText().equals("") ||
+                v.txtCelular.getText().equals("") ||
+                v.txtEmail.getText().equals("") ||
+                v.txtSueldo.getText().equals("") ||
+                v.cmbEstadoCivil.getSelectedIndex()== 0 ||
+                v.cmbDepartamento.getSelectedIndex()==0){
+            return false;
+        }
+        return true;
+    }
+    
 }
