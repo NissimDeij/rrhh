@@ -63,6 +63,8 @@ public class controlador implements ActionListener, MouseListener {
             this.vistaPrincipal.setLocationRelativeTo(null);
             this.vistaPrincipal.setTitle("Human Resources ERP");
             this.vistaPrincipal.setVisible(true);
+            this.vistaPrincipal.tblTrabajadores.setModel(this.modelo.ListarTrabajadores()); //actualiza JTable
+            
         } catch (UnsupportedLookAndFeelException ex) {
         } catch (ClassNotFoundException ex) {
         } catch (InstantiationException ex) {
@@ -125,9 +127,22 @@ public class controlador implements ActionListener, MouseListener {
                 this.vistaTrabajador.setTitle("Buscar trabajador por codigo");
                 this.vistaTrabajador.setVisible(true);
                 this.vistaTrabajador.lblTituloVentana.setText("Buscar trabajador");
-                this.vistaTrabajador.panelCampos.setEnabled(false); //deshabilitamos todos los campos
-                this.vistaTrabajador.txtCodigo.setEnabled(true); //habilitamos solo el campo codigo
+                
+                //habilitamo y deshabilitamos los campos requeridos
+                this.vistaTrabajador.txtCodigo.setEditable(true);
+                this.vistaTrabajador.txtRut.setEditable(false);
+                this.vistaTrabajador.txtDv.setEditable(false);
+                this.vistaTrabajador.txtNombre.setEditable(false);
+                this.vistaTrabajador.txtApellido.setEditable(false);
+                this.vistaTrabajador.txtCelular.setEditable(false);
+                this.vistaTrabajador.txtEmail.setEditable(false);
+                this.vistaTrabajador.txtSueldo.setEditable(false);
+                this.vistaTrabajador.cmbEstadoCivil.setEnabled(false);
+                this.vistaTrabajador.cmbDepartamento.setEnabled(false);
+                
+                this.vistaTrabajador.btnBuscar.setEnabled(true);
                 this.vistaTrabajador.btnGrabar.setEnabled(false);
+                this.vistaTrabajador.btnModificar.setEnabled(false);
                 this.vistaTrabajador.btnEliminar.setEnabled(false);
                 break;
 
@@ -136,8 +151,23 @@ public class controlador implements ActionListener, MouseListener {
                 this.vistaTrabajador.setTitle("Agregar trabajador");
                 this.vistaTrabajador.setVisible(true);
                 this.vistaTrabajador.lblTituloVentana.setText("Agregar trabajador");
-                this.vistaTrabajador.btnEliminar.setEnabled(false);
+                
+                //habilitamo y deshabilitamos los campos requeridos
+                this.vistaTrabajador.txtCodigo.setEditable(true);
+                this.vistaTrabajador.txtRut.setEditable(true);
+                this.vistaTrabajador.txtDv.setEditable(true);
+                this.vistaTrabajador.txtNombre.setEditable(true);
+                this.vistaTrabajador.txtApellido.setEditable(true);
+                this.vistaTrabajador.txtCelular.setEditable(true);
+                this.vistaTrabajador.txtEmail.setEditable(true);
+                this.vistaTrabajador.txtSueldo.setEditable(true);
+                this.vistaTrabajador.cmbEstadoCivil.setEnabled(true);
+                this.vistaTrabajador.cmbDepartamento.setEnabled(true);
+                
+                this.vistaTrabajador.btnBuscar.setEnabled(false);
+                this.vistaTrabajador.btnGrabar.setEnabled(true);
                 this.vistaTrabajador.btnModificar.setEnabled(false);
+                this.vistaTrabajador.btnEliminar.setEnabled(false);
                 break;
 
             case itmEditar:
@@ -145,8 +175,22 @@ public class controlador implements ActionListener, MouseListener {
                 this.vistaTrabajador.setTitle("Editar trabajador por codigo");
                 this.vistaTrabajador.setVisible(true);
                 this.vistaTrabajador.lblTituloVentana.setText("Editar trabajador");
-                this.vistaTrabajador.txtCodigo.setEnabled(false); //habilitamos solo el campo codigo
+                
+                //habilitamo y deshabilitamos los campos requeridos
+                this.vistaTrabajador.txtCodigo.setEditable(false);
+                this.vistaTrabajador.txtRut.setEditable(true);
+                this.vistaTrabajador.txtDv.setEditable(true);
+                this.vistaTrabajador.txtNombre.setEditable(true);
+                this.vistaTrabajador.txtApellido.setEditable(true);
+                this.vistaTrabajador.txtCelular.setEditable(true);
+                this.vistaTrabajador.txtEmail.setEditable(true);
+                this.vistaTrabajador.txtSueldo.setEditable(true);
+                this.vistaTrabajador.cmbEstadoCivil.setEnabled(true);
+                this.vistaTrabajador.cmbDepartamento.setEnabled(true);
+                
+                this.vistaTrabajador.btnBuscar.setEnabled(false);
                 this.vistaTrabajador.btnGrabar.setEnabled(false);
+                this.vistaTrabajador.btnModificar.setEnabled(true);
                 this.vistaTrabajador.btnEliminar.setEnabled(false);
                 break;
 
@@ -155,10 +199,22 @@ public class controlador implements ActionListener, MouseListener {
                 this.vistaTrabajador.setTitle("Eliminar trabajador por codigo");
                 this.vistaTrabajador.setVisible(true);
                 this.vistaTrabajador.lblTituloVentana.setText("Eliminar trabajador");
-                this.vistaTrabajador.panelCampos.setEnabled(false); //deshabilitamos todos los campos
-                this.vistaTrabajador.txtCodigo.setEnabled(true); //habilitamos solo el campo codigo
+                
+                this.vistaTrabajador.txtCodigo.setEditable(true); //habilitamos solo el campo codigo
+                this.vistaTrabajador.txtRut.setEditable(false);
+                this.vistaTrabajador.txtDv.setEditable(false);
+                this.vistaTrabajador.txtNombre.setEditable(false);
+                this.vistaTrabajador.txtApellido.setEditable(false);
+                this.vistaTrabajador.txtCelular.setEditable(false);
+                this.vistaTrabajador.txtEmail.setEditable(false);
+                this.vistaTrabajador.txtSueldo.setEditable(false);
+                this.vistaTrabajador.cmbEstadoCivil.setEnabled(false);
+                this.vistaTrabajador.cmbDepartamento.setEnabled(false);
+                
+                this.vistaTrabajador.btnBuscar.setEnabled(false);
                 this.vistaTrabajador.btnGrabar.setEnabled(false);
                 this.vistaTrabajador.btnModificar.setEnabled(false);
+                this.vistaTrabajador.btnEliminar.setEnabled(true);
                 break;
                 
             case itmListar:
