@@ -271,11 +271,10 @@
     <Component class="javax.swing.JComboBox" name="cmbEstadoCivil">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="3">
+            <StringItem index="0" value="Casado"/>
+            <StringItem index="1" value="Soltero"/>
+            <StringItem index="2" value="Viudo"/>
           </StringArray>
         </Property>
       </Properties>
@@ -287,11 +286,12 @@
     <Component class="javax.swing.JComboBox" name="cmbDepartamento">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="5">
+            <StringItem index="0" value="Inform&#xe1;tica"/>
+            <StringItem index="1" value="Redes"/>
+            <StringItem index="2" value="Administraci&#xf3;n"/>
+            <StringItem index="3" value="Finanzas"/>
+            <StringItem index="4" value="Bienestar"/>
           </StringArray>
         </Property>
       </Properties>

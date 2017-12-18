@@ -87,9 +87,9 @@ public class menuAgregar extends javax.swing.JFrame {
 
         jLabel7.setText("-");
 
-        cmbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casado", "Soltero", "Viudo" }));
 
-        cmbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Informática", "Redes", "Administración", "Finanzas", "Bienestar" }));
 
         btnVolver.setText("Volver");
 
