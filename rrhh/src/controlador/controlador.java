@@ -223,12 +223,16 @@ public class controlador implements ActionListener, MouseListener {
                 this.vistaTrabajador.setVisible(false);
             
             case btnBuscar:
-                if (this){
-                    
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se pudo encontrar al trabajador");
-                }
-                break;
+                String[] arreglin = new String[8];
+                arreglin = this.modelo.buscarTrabajador(Integer.parseInt(this.vistaTrabajador.txtCodigo.getText()));
+                this.vistaTrabajador.txtRut.setText(String.valueOf(arreglin[0]));
+                this.vistaTrabajador.txtNombre.setText(String.valueOf(arreglin[1]));
+                this.vistaTrabajador.txtApellido.setText(String.valueOf(arreglin[2]));
+                this.vistaTrabajador.txtCelular.setText(String.valueOf(arreglin[3]));
+                this.vistaTrabajador.txtEmail.setText(String.valueOf(arreglin[4]));
+                this.vistaTrabajador.txtSueldo.setText(String.valueOf(arreglin[5]));
+                this.vistaTrabajador.cmbEstadoCivil.setSelectedItem(String.valueOf(arreglin[6]));
+                this.vistaTrabajador.cmbDepartamento.setSelectedItem(String.valueOf(arreglin[7]));
                 
             case btnGuardar:
                 //Enviamos datos del formulario Agregar Trabajador a metodo agregarTrabajador
