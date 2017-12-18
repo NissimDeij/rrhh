@@ -45,16 +45,30 @@ public class modelo extends conexion {
     }
 
     //metodo para buscar un unico trabajador ya ingresado
-    public boolean buscarTrabajador(int codigo){
+    public String[] buscarTrabajador(int codigo){
+        String[] arreglo = new String[8];
+        String query="SELECT * FROM rrhh_bd.empleados WHERE codigo="+codigo+";";
         try {
-            PreparedStatement pstm = this.getConexion().prepareStatement("SELECT count(*) as total FROM rrhh_bd.empleados;");
+            PreparedStatement pstm = this.getConexion().prepareStatement(query);
             ResultSet res = pstm.executeQuery();
             res.next();
-            registros = res.getInt("total");
             res.close();
+            while (res.next()) {
+                arreglo[0] = res.getString("rut");
+                arreglo[1] = res.getString("nombre");
+                arreglo[2] = res.getString("apellido");
+                arreglo[3] = res.getString("celular");
+                arreglo[4] = res.getString("email");
+                arreglo[0] = res.getString("celular");
+                arreglo[5] = res.getString("sueldoBruto");
+                arreglo[6] = res.getString("estadoCivil");
+                arreglo[7] = res.getString("nomDepto");
+            }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+        
+        return arreglo;
     }
 
     
