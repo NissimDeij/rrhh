@@ -220,6 +220,9 @@ public class controlador implements ActionListener, MouseListener {
             case itmListar:
                 this.vistaPrincipal.tblTrabajadores.setModel(this.modelo.ListarTrabajadores()); //actualiza JTable
                 this.vistaTrabajador.setVisible(false);
+            
+            case btnBuscar:
+                break;
                 
             case btnGuardar:
                 //Enviamos datos del formulario Agregar Trabajador a metodo agregarTrabajador
