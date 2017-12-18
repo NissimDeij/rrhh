@@ -195,8 +195,19 @@ public class modelo extends conexion {
         }
         return false;
     }
-
+    
+    //metodo para validar que el rut sea numerico
+    public boolean validarRut(String rut){
+        try {
+            Integer.parseInt(rut);
+            return true;
+        } catch(Exception e){
+            return false;
+        }
+    }
+    
     //metodo para validar que el digito verificador del rut sea 0-9, K o k
+    /*
     public boolean validarDigitoVerificador(String digito) {
         String arreglo[] = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "K", "k"};
         if (!Arrays.asList(arreglo).contains(digito)) {
@@ -204,7 +215,8 @@ public class modelo extends conexion {
         }
         return true;
     }
-
+    */
+    
     //metodo para validar que el celular este compuesto por digitos y que sea de largo 9
     public boolean validarCelular(String celular) {
         if (celular.length() != 9) {
